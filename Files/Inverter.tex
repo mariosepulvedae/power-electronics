@@ -1,0 +1,123 @@
+\documentclass[12pt,letterpaper,times]{article}%book, beamer
+%Inicia preámbulo
+
+%\include{tesis}
+
+
+%\usepackage{fourier}
+%\usepackage{mathpazo}
+%\usepackage{antpolt}
+
+% to change the fonts
+
+\usepackage{array}
+
+\usepackage{pdfpages}
+\usepackage[utf8]{inputenc}
+%\usepackage[numbers]{natbib}
+\usepackage[english]{babel}
+%\usepackage{mathptmx}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\usepackage{xcolor}
+
+%\usepackage[margin=1.5cm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{parskip}
+\usepackage[colorlinks=false]{hyperref}
+\usepackage{amsmath}
+%\usepackage{amsmath,amsfonts}
+%\usepackage{amssymb}
+%\usepackage{mathrsfs}
+\usepackage{siunitx}
+%\usepackage[usenames]{color}
+\usepackage{multirow} % para las tablas
+%\usepackage[spanish,es-tabla]{babel}
+\usepackage{hieroglf}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{wrapfig}
+\usepackage{booktabs}
+%\usepackage{slashbox}
+%\usepackage{tcolorbox}
+\usepackage{multicol}
+\usepackage{fontenc}
+%\usepackage{tgbonum}
+
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{indentfirst}
+
+
+\usepackage{indentfirst}
+\usepackage{tabularray}
+
+\usepackage{lscape}
+
+\usepackage{listings}
+\usepackage{appendix}
+
+\usepackage{multicol}
+\setlength{\columnsep}{1cm}
+
+\usepackage{nameref}
+
+\usepackage{tikz}
+\usetikzlibrary{datavisualization.formats.functions} % LaTeX and plain TeX
+
+\usetikzlibrary[datavisualization]
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+\usepackage[siunitx, RPvoltages,american resistor]{circuitikz}
+
+
+\usetikzlibrary {circuits.ee.IEC} 
+\newcommand*{\TickSize}{2pt}%
+
+\ctikzset{quadpoles/transformer core/height=3}
+\usepgfplotslibrary{fillbetween}
+\author{Mario Eduardo Sepúlveda-Hernández}
+\date{\today}
+\title{DC-AC Inverter (One phase)}
+
+
+\begin{document}
+	\maketitle
+	
+	\begin{tikzpicture}[circuit ee IEC,scale=0.9]
+		\draw (8,-2) node[nigfete,bodydiode](Q){};
+		\draw (Q.D) to[short] ($(Q.D)+(0,1)$);
+		\draw (8,-6) node[nigfete,bodydiode](Q3){};
+		\draw (Q3.D) to[short,-*] ($(Q3.D)+(0,1)$);
+		\draw (14,-2) node[nigfete,bodydiode,xscale=-1](Q4){};
+		\draw (14,-6) node[nigfete,bodydiode,xscale=-1](Q2){};
+		\draw (Q2.D) to[short,-*] ($(Q2.D)+(0,1)$);
+		\draw ($(Q3.D)+(0,1)$) to[american resistor=$R_{L}$] ($(Q2.D)+(0,1)$);
+		\draw ($(Q2.D)+(0,1)$) to[short] (Q4.S);
+		\draw ($(Q3.D)+(0,1)$) to[short] (Q.S);
+		\draw (Q2.S) to[short] ($(Q2.S)+(0,-1)$)
+		to [short] ($(Q2.S)+(-6,-1)$)
+		to[short](Q3.S);
+		\draw (Q4.D) to[short] ($(Q4.D)+(0,1)$)
+		to[short]($(Q4.D)+(-6,1)$);
+		\draw (Q.G) to[short,-o] ($(Q.G)+(-0.5,0)$)
+		node[left]{$V_{1}$};
+		\draw (Q3.G) to[short,-o] ($(Q3.G)+(-0.5,0)$)
+		node[left]{$V_{2}$};
+		\draw (Q4.G) to[short,-o] ($(Q4.G)+(0.5,0)$)
+		node[right]{$V_{2}$};
+		\draw (Q2.G) to[short,-o] ($(Q2.G)+(0.5,0)$)
+		node[right]{$V_{1}$};
+		\draw ($(Q3.S)+(0,-1)$) to[short]($(Q3.S)+(-4,-1)$);
+		\draw ($(Q3.D)+(-4,1)$) to[cC=$C$] ($(Q3.S)+(-4,-1)$);
+		\draw ($(Q.D)+(-4,1)$) to[cC] ($(Q3.D)+(-4,1)$);
+		\draw ($(Q3.D)+(-4,1)$) to[short,-*] ($(Q3.D)+(-4,1)$) node[right]{0};
+		\draw ($(Q.D)+(-4,1)$) to[short] ($(Q.D)+(0,1)$);
+		\draw ($(Q.D)+(-4,1)$) to[short] ($(Q.D)+(-8,1)$)
+		to[battery={info=12 V}] ($(Q3.S)+(-8,-1)$)
+		to[short] ($(Q3.S)+(-4,-1)$);
+	\end{tikzpicture}
+
+\end{document}
