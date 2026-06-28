@@ -1,6 +1,6 @@
 
 
-Files/*.aux
-Files/*.log
-Files/*.out
-Files/*.synctex.gz
+Files/Inverter-SinglePhase/*.aux
+Files/Inverter-SinglePhase/*.log
+Files/Inverter-SinglePhase/*.out
+Files/Inverter-SinglePhase/*.synctex.gz
