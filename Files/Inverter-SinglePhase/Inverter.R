@@ -1,5 +1,6 @@
 library(ggplot2)
 library(latex2exp)
+library(gridExtra)
 name <- "~/Documentos/trabajosLaTex/inverter.txt"
 data <- read.delim(name,header=TRUE,sep="\t")
 
@@ -8,10 +9,34 @@ datos <- data.frame(t=data$time[0:1500],
                     V1=data$V.v1.[0:1500],
                     V2=data$V.v2.[0:1500])
 
-ggplot(data=datos)+
-  geom_line(mapping = aes(x=t,y=Vout))+
-  ggtitle(TeX("$V_{out}$ Signal"))+
-  theme(text = element_text(size=15, family="LM Roman 10"))
+vout<-ggplot(data=datos)+
+  geom_line(mapping = aes(x=t,y=Vout),colour=rgb(255/255, 60/255, 0/255,1),linewidth=1.6)+
+  xlab(TeX("$t[s]$"))+
+  ylab(TeX("$V_{out}\\ [V]$"))+
+  theme_classic()+
+  theme(text = element_text(size=20, family="LM Roman 10"))
+
+v1<-ggplot(data=datos)+
+  geom_line(mapping = aes(x=t,y=V1),colour=rgb(100/255, 176/255, 128/255,1),linewidth=1.6)+
+  xlab(TeX("$t[s]$"))+
+  ylab(TeX("$V_{1}\\ [V]$"))+
+  theme_classic()+
+  theme(text = element_text(size=20, family="LM Roman 10"))
+
+v2<-ggplot(data=datos)+
+  geom_line(mapping = aes(x=t,y=V2),colour=rgb(255/255, 208/255, 0/255,1),linewidth=1.6)+
+  xlab(TeX("$t[s]$"))+
+  ylab(TeX("$V_{2}\\ [V]$"))+
+  theme_classic()+
+  theme(text = element_text(size=20, family="LM Roman 10"))
+
+out<-grid.arrange(v1, v2, vout, nrow = 3)
+
+ggsave(filename="/home/eduardo/dev/repos/power-electronics/Files/Inverter-SinglePhase/Inverter.png",
+       plot=out,
+       dpi=500,
+       width=16,
+       height=8)
 
 
 caracterizacion<-ggplot(data = datos)+

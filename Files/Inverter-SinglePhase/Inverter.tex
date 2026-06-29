@@ -86,7 +86,7 @@
 \begin{document}
 	\maketitle
 	
-	\begin{tikzpicture}[circuit ee IEC,scale=0.9]
+	\begin{tikzpicture}[american voltages,scale=0.9]
 		\draw (8,-2) node[nigfete,bodydiode](Q){};
 		\draw (Q.D) to[short] ($(Q.D)+(0,1)$);
 		\draw (8,-6) node[nigfete,bodydiode](Q3){};
@@ -94,7 +94,7 @@
 		\draw (14,-2) node[nigfete,bodydiode,xscale=-1](Q4){};
 		\draw (14,-6) node[nigfete,bodydiode,xscale=-1](Q2){};
 		\draw (Q2.D) to[short,-*] ($(Q2.D)+(0,1)$);
-		\draw ($(Q3.D)+(0,1)$) to[american resistor=$R_{L}$] ($(Q2.D)+(0,1)$);
+		\draw ($(Q3.D)+(0,1)$) to[american resistor=$R_{L}$,v<=$V_{2}-V_{1}$] ($(Q2.D)+(0,1)$);
 		\draw ($(Q2.D)+(0,1)$) to[short] (Q4.S);
 		\draw ($(Q3.D)+(0,1)$) to[short] (Q.S);
 		\draw (Q2.S) to[short] ($(Q2.S)+(0,-1)$)
@@ -111,13 +111,31 @@
 		\draw (Q2.G) to[short,-o] ($(Q2.G)+(0.5,0)$)
 		node[right]{$V_{1}$};
 		\draw ($(Q3.S)+(0,-1)$) to[short]($(Q3.S)+(-4,-1)$);
-		\draw ($(Q3.D)+(-4,1)$) to[cC=$C$] ($(Q3.S)+(-4,-1)$);
-		\draw ($(Q.D)+(-4,1)$) to[cC] ($(Q3.D)+(-4,1)$);
+		\draw ($(Q3.D)+(-4,1)$) to[cC=$C$,v<=$\dfrac{V_{DC}}{2}$] ($(Q3.S)+(-4,-1)$);
+		\draw ($(Q.D)+(-4,1)$) to[cC=$C$,v=$\dfrac{V_{DC}}{2}$] ($(Q3.D)+(-4,1)$);
 		\draw ($(Q3.D)+(-4,1)$) to[short,-*] ($(Q3.D)+(-4,1)$) node[right]{0};
 		\draw ($(Q.D)+(-4,1)$) to[short] ($(Q.D)+(0,1)$);
 		\draw ($(Q.D)+(-4,1)$) to[short] ($(Q.D)+(-8,1)$)
-		to[battery={info=12 V}] ($(Q3.S)+(-8,-1)$)
+		to[battery1,l=$V_{DC}$, invert] ($(Q3.S)+(-8,-1)$)
 		to[short] ($(Q3.S)+(-4,-1)$);
 	\end{tikzpicture}
 
+
+
+Where $V_{DC}=12$V and $C=220\mu$F
+
+The output voltage for the circuit is represented in the Figure \ref{fig:vsal}
+	
+To activate the MOSFETS, toy have to inject a pulse-train of $0-10$V with a frecuency of 60 Hz
+
+The output voltage is going to be the voltage you measure in the load $R_{L}$
+
+THe output voltage is the orange signal from the Figure \ref{fig:vsal} and itś a voltage from $-12$V to $+12$V, i.e. a simulation of a single-phase generator 
+
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[width=1.2\textwidth]{Inverter.png}
+		\caption{Output voltage from the inverter}
+		\label{fig:vsal}
+	\end{figure}
 \end{document}
