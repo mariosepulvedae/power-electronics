@@ -4,3 +4,8 @@ Files/Inverter-SinglePhase/*.aux
 Files/Inverter-SinglePhase/*.log
 Files/Inverter-SinglePhase/*.out
 Files/Inverter-SinglePhase/*.synctex.gz
+
+Files/ThreePhase-Inverter/*.aux
+Files/ThreePhase-Inverter/*.log
+Files/ThreePhase-Inverter/*.out
+Files/ThreePhase-Inverter/*.synctex.gz

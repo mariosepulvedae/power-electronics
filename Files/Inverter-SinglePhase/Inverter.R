@@ -35,8 +35,8 @@ out<-grid.arrange(v1, v2, vout, nrow = 3)
 ggsave(filename="/home/eduardo/dev/repos/power-electronics/Files/Inverter-SinglePhase/Inverter.png",
        plot=out,
        dpi=500,
-       width=16,
-       height=8)
+       width=10,
+       height=10)
 
 
 caracterizacion<-ggplot(data = datos)+

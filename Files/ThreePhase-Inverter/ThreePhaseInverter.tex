@@ -80,7 +80,7 @@
 \usepgfplotslibrary{fillbetween}
 \author{Mario Eduardo Sepúlveda-Hernández}
 \date{\today}
-\title{DC-AC Inverter (One phase)}
+\title{DC-AC Three-phase inverter}
 
 
 \begin{document}
@@ -119,23 +119,11 @@
 		to[battery1,l=$V_{DC}$, invert] ($(Q3.S)+(-8,-1)$)
 		to[short] ($(Q3.S)+(-4,-1)$);
 	\end{tikzpicture}
-
-
-
-Where $V_{DC}=12$V and $C=220\mu$F
-
-The output voltage for the circuit is represented in the Figure \ref{fig:vsal}
 	
-To activate the MOSFETS, toy have to inject a pulse-train of $0-10$V with a frecuency of 60 Hz
+	
+	
+	Where $V_{DC}=12$V and $C=220\mu$F
 
-The output voltage is going to be the voltage you measure in the load $R_{L}$
+	
 
-THe output voltage is the orange signal from the Figure \ref{fig:vsal} and itś a voltage from $-12$V to $+12$V, i.e. a simulation of a single-phase generator` 
-
-	\begin{figure}[h!]
-		\centering
-		\includegraphics[width=1.2\textwidth]{Inverter.png}
-		\caption{Output voltage from the inverter}
-		\label{fig:vsal}
-	\end{figure}
 \end{document}
