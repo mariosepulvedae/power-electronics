@@ -88,36 +88,12 @@
 	
 	\begin{tikzpicture}[american voltages,scale=0.9]
 		\draw (8,-2) node[nigfete,bodydiode](Q){};
-		\draw (Q.D) to[short] ($(Q.D)+(0,1)$);
-		\draw (8,-6) node[nigfete,bodydiode](Q3){};
-		\draw (Q3.D) to[short,-*] ($(Q3.D)+(0,1)$);
-		\draw (14,-2) node[nigfete,bodydiode,xscale=-1](Q4){};
-		\draw (14,-6) node[nigfete,bodydiode,xscale=-1](Q2){};
-		\draw (Q2.D) to[short,-*] ($(Q2.D)+(0,1)$);
-		\draw ($(Q3.D)+(0,1)$) to[american resistor=$R_{L}$,v<=$V_{2}-V_{1}$] ($(Q2.D)+(0,1)$);
-		\draw ($(Q2.D)+(0,1)$) to[short] (Q4.S);
-		\draw ($(Q3.D)+(0,1)$) to[short] (Q.S);
-		\draw (Q2.S) to[short] ($(Q2.S)+(0,-1)$)
-		to [short] ($(Q2.S)+(-6,-1)$)
-		to[short](Q3.S);
-		\draw (Q4.D) to[short] ($(Q4.D)+(0,1)$)
-		to[short]($(Q4.D)+(-6,1)$);
-		\draw (Q.G) to[short,-o] ($(Q.G)+(-0.5,0)$)
-		node[left]{$V_{1}$};
-		\draw (Q3.G) to[short,-o] ($(Q3.G)+(-0.5,0)$)
-		node[left]{$V_{2}$};
-		\draw (Q4.G) to[short,-o] ($(Q4.G)+(0.5,0)$)
-		node[right]{$V_{2}$};
-		\draw (Q2.G) to[short,-o] ($(Q2.G)+(0.5,0)$)
-		node[right]{$V_{1}$};
-		\draw ($(Q3.S)+(0,-1)$) to[short]($(Q3.S)+(-4,-1)$);
-		\draw ($(Q3.D)+(-4,1)$) to[cC=$C$,v<=$\dfrac{V_{DC}}{2}$] ($(Q3.S)+(-4,-1)$);
-		\draw ($(Q.D)+(-4,1)$) to[cC=$C$,v=$\dfrac{V_{DC}}{2}$] ($(Q3.D)+(-4,1)$);
-		\draw ($(Q3.D)+(-4,1)$) to[short,-*] ($(Q3.D)+(-4,1)$) node[right]{0};
-		\draw ($(Q.D)+(-4,1)$) to[short] ($(Q.D)+(0,1)$);
-		\draw ($(Q.D)+(-4,1)$) to[short] ($(Q.D)+(-8,1)$)
-		to[battery1,l=$V_{DC}$, invert] ($(Q3.S)+(-8,-1)$)
-		to[short] ($(Q3.S)+(-4,-1)$);
+		\draw (8,-10) node[nigfete,bodydiode](Q4){};
+		\draw (12,-2) node[nigfete,bodydiode](Q3){};
+		\draw (12,-10) node[nigfete,bodydiode](Q6){};
+		\draw (16,-2) node[nigfete,bodydiode](Q5){};
+		\draw (16,-10) node[nigfete,bodydiode](Q2){};
+		\draw (Q.S) to[short] (Q4.D);
 	\end{tikzpicture}
 	
 	
