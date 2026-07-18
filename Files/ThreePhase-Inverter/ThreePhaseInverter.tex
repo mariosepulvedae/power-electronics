@@ -94,6 +94,13 @@
 		\draw (16,-2) node[nigfete,bodydiode](Q5){};
 		\draw (16,-10) node[nigfete,bodydiode](Q2){};
 		\draw (Q.S) to[short] (Q4.D);
+		\draw (Q3.S) to[short] (Q6.D);
+		\draw (Q5.S) to[short] (Q2.D);
+		\draw ($(Q.S)+(0,-1)$) to[short,*-] ($(Q.S)+(2,-1)$) to[short] ($(Q.S)+(3.5,-1)$)
+		to[crossing, bipoles/crossing/size=0.5] ($(Q.S)+(4.5,-1)$) to[short] ($(Q.S)+(7.5,-1)$)
+		to[crossing, bipoles/crossing/size=0.5] ($(Q.S)+(8.5,-1)$) to[short] ($(Q.S)+(10,-1)$);
+		\draw ($(Q3.S)+(0,-3)$) to[short,*-] ($(Q3.S)+(2,-3)$) to[crossing, bipoles/crossing/size=0.5] ($(Q3.S)+(6,-3)$);
+		\draw ($(Q5.S)+(0,-5)$) to[short,*-] ($(Q5.S)+(2,-5)$);
 	\end{tikzpicture}
 	
 	
